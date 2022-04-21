@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css';
 import AddNewTodoForm from './components/AddNewTodoForm';
-import TodoListItem from './components/TodoListItem';
+import AlertInfo from './components/AlertInfo';
+import TodoList from './components/TodoList';
 
 const App = () => {
 	const [todos, setTodos] = useState([
@@ -40,7 +41,7 @@ const App = () => {
 	}, [])
 	// a empty dependency will make the useeffect only run once
 
-	// Derive unfinishedTodos and finishedTodods from todos state
+	// Derive unfinishedTodos and finishedTodos from todos state
 	// This will only be executed if 'todos' have changed since last render,
 	// and only AFTER the component has been rendered
 	useEffect(() => {
@@ -71,39 +72,31 @@ const App = () => {
 			{todos.length > 0 && (
 				<>
 					{unfinishedTodos.length > 0 && (
-						<ul className="todolist">
-							{
-								unfinishedTodos.map((todo, index) =>
-									(
-										<TodoListItem 
-											todo={todo} 
-											key={index} 
-											onTitleClick={toggleTodo} 
-											onDelete={deleteTodo}
-										/>
-									)
-								)
-							}
-						</ul>
+						<TodoList 
+							todos={unfinishedTodos} 
+							onToggleTodo={toggleTodo}
+							onDeleteTodo={deleteTodo}
+						/>
+					)}
+
+					{unfinishedTodos.length === 0 && (
+						<>
+						<AlertInfo>
+							<h2 className="text-center">No todos</h2>
+							<p>You all <strong>good</strong>!</p>
+							<img src="https://blog.hubspot.com/hubfs/Smiling%20Leo%20Perfect%20GIF.gif" alt="No todos" className="img-fluid"/>
+						</AlertInfo>
+						</>
 					)}
 
 					{finishedTodos.length > 0 && (
 						<>
 							<h2>Completed todos</h2>
-							<ul className="todolist">
-								{
-									finishedTodos.map((todo, index) =>
-										(
-											<TodoListItem 
-												todo={todo} 
-												key={index} 
-												onTitleClick={toggleTodo} 
-												onDelete={deleteTodo}
-											/>
-										)
-									)
-								}
-							</ul>
+							<TodoList 
+								todos={finishedTodos} 
+								onToggleTodo={toggleTodo}
+								onDeleteTodo={deleteTodo}
+							/>
 						</>
 					)}
 
@@ -111,6 +104,14 @@ const App = () => {
 						{finishedTodos.length} av {todos.length} todos avklarade
 					</p>
 
+				</>
+			)}
+
+			{todos.length === 0 && (
+				<>
+					<AlertInfo>
+						Move on.
+					</AlertInfo>
 				</>
 			)}
 		</div>
