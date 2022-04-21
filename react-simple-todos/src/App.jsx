@@ -23,7 +23,13 @@ const App = () => {
 		setTodos(todos.filter(todo => todo !== clickedTodo))
 	}
 
-	const handleAddNewTodo = (newTodo) => {
+	const handleAddNewTodo = (newTodoTitle) => {
+		if (newTodoTitle.length < 2) {
+			alert("Not good enough")
+			return
+		}
+
+		const newTodo = { title: newTodoTitle, completed: false }
 		setTodos([...todos, newTodo])
 	}
 
