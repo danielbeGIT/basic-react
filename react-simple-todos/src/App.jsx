@@ -6,10 +6,10 @@ import TodoList from './components/TodoList';
 
 const App = () => {
 	const [todos, setTodos] = useState([
-		{ title: "Make coffee", completed: true },
-		{ title: "Drink coffee", completed: false },
-		{ title: "Drink MOAR coffee", completed: false },
-		{ title: "Drink ALL THE coffee", completed: false },
+		{ title: "Eat", completed: true },
+		{ title: "Code", completed: false },
+		{ title: "Game", completed: false },
+		{ title: "Sleep", completed: false },
 	])
 
 	const [unfinishedTodos, setUnfinishedTodos] = useState([])
