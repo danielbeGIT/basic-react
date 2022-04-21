@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const AddNewTodoForm = ({ onAddNewTodo }) => {
     // input state
 	const [newTodoTitle, setNewTodoTitle] = useState('')
+
+    // input reference
+    const newTodoTitleRef = useRef()
 
     const handleSubmit = e => {
 		// stop form from submitting
@@ -15,6 +18,11 @@ const AddNewTodoForm = ({ onAddNewTodo }) => {
 		// clear newTodoTitle state
 		setNewTodoTitle('')
 	}
+
+    // focus on input field when component is mounted ONLY once because of empty dependency array
+    useEffect(() => {
+        newTodoTitleRef.current.focus()
+    }, [])
     
     return (
         <form onSubmit={handleSubmit}>
@@ -22,13 +30,15 @@ const AddNewTodoForm = ({ onAddNewTodo }) => {
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="Todo title"
+                    placeholder="Todo title" 
+                    ref={newTodoTitleRef}
                     onChange={e => setNewTodoTitle(e.target.value)}
                     value={newTodoTitle}
                 />
                 <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary" 
+                    disabled={!newTodoTitle.length}
                 >
                     Create
                 </button>
