@@ -40,6 +40,7 @@ const getCurrentWeather = async query => {
  *
  * @param {string} query City to get current weather for
  */
+/*
 const getCurrentWeatherFetch = async query => {
     // get weather for query from OpenWeatherMap API
     const response = await fetch(`${BASE_URL}/weather?q=${query}&units=metric&appid=${API_KEY}`)
@@ -53,6 +54,7 @@ const getCurrentWeatherFetch = async query => {
     // return current weather
     return data
 }
+*/
 
 export {
     getCurrentWeather,
