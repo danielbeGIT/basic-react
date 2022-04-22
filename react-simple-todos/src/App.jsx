@@ -5,12 +5,12 @@ import AlertInfo from './components/AlertInfo';
 import TodoList from './components/TodoList';
 
 const App = () => {
-	const [todos, setTodos] = useState([
-		{ title: "Eat", completed: true },
-		{ title: "Code", completed: false },
-		{ title: "Game", completed: false },
-		{ title: "Sleep", completed: false },
-	])
+	const [todos, setTodos] = useState(() => {
+		const storedTodos = JSON.parse(localStorage.getItem('todos'))
+		return storedTodos ?? []
+			// ? storedTodos
+			// : []
+	})
 
 	const [unfinishedTodos, setUnfinishedTodos] = useState([])
 	const [finishedTodos, setFinishedTodos] = useState([])
@@ -34,17 +34,42 @@ const App = () => {
 		setTodos([...todos, newTodo])
 	}
 
+	
+	/*
 	// This will only be executed when the component is mounted,
 	// and only AFTER the component has been rendered
 	useEffect(() => {
-		console.log("This will be executed once")
+		// console.log("This will be executed once")
+
+		
+		// const localStorageTodos = localStorage.getItem('todos')
+
+		// const storedTodos = localStorageTodos 
+		// 	? JSON.parse(localStorageTodos)
+		// 	: []
+
+		
+		const storedTodos = JSON.parse(localStorage.getItem('todos'))
+
+		if (storedTodos) {
+			setTodos(storedTodos)
+		}
+		
+		console.log("Got todos from localStorage", storedTodos)
+		
 	}, [])
 	// a empty dependency will make the useeffect only run once
+	*/
+
 
 	// Derive unfinishedTodos and finishedTodos from todos state
 	// This will only be executed if 'todos' have changed since last render,
 	// and only AFTER the component has been rendered
 	useEffect(() => {
+		// Save new todos state to localStorage
+		console.log("Updating localStorage with new todos..", todos)
+		localStorage.setItem('todos', JSON.stringify(todos))
+
 		// console.log("Updating todos")
 		setUnfinishedTodos(todos.filter(todo => !todo.completed))
 		setFinishedTodos(todos.filter(todo => todo.completed))
