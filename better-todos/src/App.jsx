@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css'
 import AddNewTodoForm from './components/AddNewTodoForm';
 import AlertInfo from './components/AlertInfo';
 import TodoList from './components/TodoList';
@@ -76,6 +77,9 @@ const App = () => {
 	// a dependency on todos so it wont update until something changes in todos
 
 	return (
+		// Can use <Container> if boostrap "Container" is imported instead of using div
+		// Can use components instead of typing in <div className> etc
+		// <Container>
 		<div id="app" className="App container">
 			<h1>React Simple Todos</h1>
 
@@ -131,6 +135,7 @@ const App = () => {
 				</>
 			)}
 		</div>
+		// </Container>
 	)
 }
 

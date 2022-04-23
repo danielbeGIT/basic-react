@@ -1,29 +1,19 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Eat",
-      "completed": true
+      "title": "Learn React Bootstrap",
+      "completed": false,
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Code",
-      "completed": true
+      "title": "Learn React Router",
+      "completed": false,
+      "id": 2
     },
     {
-      "id": 3,
-      "title": "Game",
-      "completed": true
-    },
-    {
-      "id": 4,
-      "title": "Sleep",
-      "completed": true
-    },
-    {
-      "id": 5,
-      "title": "Repeat",
-      "completed": true
+      "title": "Learn more",
+      "completed": false,
+      "id": 3
     }
   ]
 }
