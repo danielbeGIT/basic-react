@@ -1,19 +1,14 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
-const TodoListItem = ({ todo, onTitleClick, onDelete }) => {
+const TodoListItem = ({ todo }) => {
     return (
         <li className={todo.completed ? 'done' : ''}>
-            <span
+            <Link
                 className="todo-title"
-                onClick={() => onTitleClick(todo)}
+                to={`/todos/${todo.id}`}
             >
                 {todo.title}
-            </span>
-
-            <span
-                className="todo-delete"
-                onClick={() => onDelete(todo)}
-            >🗑</span>
+            </Link>
         </li>
     )
 }

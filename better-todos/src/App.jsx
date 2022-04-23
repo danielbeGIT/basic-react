@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container'
 import { Routes, Route} from 'react-router-dom'
 import TodosPage from './pages/TodosPage'
 import Navigation from './components/Navigation';
+import HomePage from './pages/HomePage';
+import TodoPage from './pages/TodoPage';
 
 
 const App = () => {
@@ -14,12 +16,11 @@ const App = () => {
 		<div  id="app">
 			<Navigation />
 
-			<Container>
+			<Container className="py-3">
 				<Routes>
-					<Route path="/" element={
-						<p>Welcome Home.</p>
-					} />
+					<Route path="/" element={<HomePage />} />
 					<Route path="/todos" element={<TodosPage />} />
+					<Route path="/todos/:id" element={<TodoPage />} />
 				</Routes>
 			</Container>
 		</div>

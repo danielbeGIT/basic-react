@@ -15,6 +15,14 @@ const getTodos = async () => {
 }
 
 /**
+ * Get a single todo
+ */
+ const getTodo = async (id) => {
+    const res = await axios.get(`${BASE_URL}/todos/${id}`)
+    return res.data
+}
+
+/**
  * Create a new todo
  * 
  * @param data Object with properties and values for the new todo
@@ -47,6 +55,7 @@ const getTodos = async () => {
 
 const actions = {
     getTodos,
+    getTodo,
     createTodo,
     deleteTodo,
     updateTodo
