@@ -3,17 +3,18 @@ import './App.css';
 import AddNewTodoForm from './components/AddNewTodoForm';
 import AlertInfo from './components/AlertInfo';
 import TodoList from './components/TodoList';
+import TodosAPI from './services/TodosAPI'
 
 const App = () => {
-	const [todos, setTodos] = useState(() => {
-		const storedTodos = JSON.parse(localStorage.getItem('todos'))
-		return storedTodos ?? []
-			// ? storedTodos
-			// : []
-	})
-
+	const [todos, setTodos] = useState([])
 	const [unfinishedTodos, setUnfinishedTodos] = useState([])
 	const [finishedTodos, setFinishedTodos] = useState([])
+
+	// get todos from api
+	const getTodos = async () => {
+		const data = await TodosAPI.getTodos()
+		setTodos(data)
+	}
 
 	const toggleTodo = (todo) => {
 		todo.completed = !todo.completed
@@ -33,6 +34,11 @@ const App = () => {
 		const newTodo = { title: newTodoTitle, completed: false }
 		setTodos([...todos, newTodo])
 	}
+
+	// get todos from api when component is first mounted
+	useEffect(() => {
+		getTodos()
+	}, [])
 
 	
 	/*
@@ -67,8 +73,8 @@ const App = () => {
 	// and only AFTER the component has been rendered
 	useEffect(() => {
 		// Save new todos state to localStorage
-		console.log("Updating localStorage with new todos..", todos)
-		localStorage.setItem('todos', JSON.stringify(todos))
+		// console.log("Updating localStorage with new todos..", todos)
+		// localStorage.setItem('todos', JSON.stringify(todos))
 
 		// console.log("Updating todos")
 		setUnfinishedTodos(todos.filter(todo => !todo.completed))
