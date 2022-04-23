@@ -19,7 +19,7 @@ const getTodos = async () => {
  * 
  * @param data Object with properties and values for the new todo
  */
- const createTodos = async (data) => {
+ const createTodo = async (data) => {
     const res = await axios.post(`${BASE_URL}/todos`, data)
     return res.data
 }
@@ -29,7 +29,7 @@ const getTodos = async () => {
  * 
  * @param todo_id Todo to delet
  */
- const deleteTodos = async (todo_id) => {
+ const deleteTodo = async (todo_id) => {
     const res = await axios.delete(`${BASE_URL}/todos/${todo_id}`)
     return res.data
 }
@@ -40,16 +40,16 @@ const getTodos = async () => {
  * @param todo_id Todo ID to update
  * @param data Data to update todo with
  */
- const updateTodos = async (todo_id, data) => {
+ const updateTodo = async (todo_id, data) => {
     const res = await axios.patch(`${BASE_URL}/todos/${todo_id}`, data)
     return res.data
 }
 
 const actions = {
     getTodos,
-    createTodos,
-    deleteTodos,
-    updateTodos
+    createTodo,
+    deleteTodo,
+    updateTodo
 }
 
 export default actions

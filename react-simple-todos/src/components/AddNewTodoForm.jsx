@@ -12,8 +12,8 @@ const AddNewTodoForm = ({ onAddNewTodo }) => {
 		e.preventDefault()
 
 		// push a new todo to the todos state
-		// const newTodo = { title: newTodoTitle, completed: false }
-        onAddNewTodo(newTodoTitle)
+		const newTodo = { title: newTodoTitle, completed: false }
+        onAddNewTodo(newTodo)
 
 		// clear newTodoTitle state
 		setNewTodoTitle('')

@@ -16,57 +16,42 @@ const App = () => {
 		setTodos(data)
 	}
 
-	const toggleTodo = (todo) => {
-		todo.completed = !todo.completed
-		setTodos([...todos])
+	// Create a new todo in API
+	const createTodo = async (newTodo) => {
+		// newTodo = { title: "", completed: false }
+
+		await TodosAPI.createTodo(newTodo)
+		getTodos()
+
+		// setTodos([...todos, newTodo])
 	}
 
-	const deleteTodo = (clickedTodo) => {
-		setTodos(todos.filter(todo => todo !== clickedTodo))
+	// Delete a todo in the API
+	const deleteTodo = async (todo) => {
+		await TodosAPI.deleteTodo(todo.id)
+		getTodos()
+
+		// setTodos(todos.filter(todo => todo !== clickedTodo))
 	}
 
-	const handleAddNewTodo = (newTodoTitle) => {
-		if (newTodoTitle.length < 2) {
-			alert("Not good enough")
-			return
+	// Toggle the completed status of todo in the API
+	const toggleTodo = async (todo) => {
+		// implement what data to update/patch
+		const data = {
+			completed: !todo.completed
 		}
+		await TodosAPI.updateTodo(todo.id, data)
+		getTodos()
 
-		const newTodo = { title: newTodoTitle, completed: false }
-		setTodos([...todos, newTodo])
+		// todo.completed = !todo.completed
+		// setTodos([...todos])
 	}
 
 	// get todos from api when component is first mounted
 	useEffect(() => {
 		getTodos()
 	}, [])
-
-	
-	/*
-	// This will only be executed when the component is mounted,
-	// and only AFTER the component has been rendered
-	useEffect(() => {
-		// console.log("This will be executed once")
-
-		
-		// const localStorageTodos = localStorage.getItem('todos')
-
-		// const storedTodos = localStorageTodos 
-		// 	? JSON.parse(localStorageTodos)
-		// 	: []
-
-		
-		const storedTodos = JSON.parse(localStorage.getItem('todos'))
-
-		if (storedTodos) {
-			setTodos(storedTodos)
-		}
-		
-		console.log("Got todos from localStorage", storedTodos)
-		
-	}, [])
 	// a empty dependency will make the useeffect only run once
-	*/
-
 
 	// Derive unfinishedTodos and finishedTodos from todos state
 	// This will only be executed if 'todos' have changed since last render,
@@ -96,7 +81,7 @@ const App = () => {
 
 			<div className="mb-3">
 				<AddNewTodoForm 
-					onAddNewTodo={handleAddNewTodo}
+					onAddNewTodo={createTodo}
 				/>
 			</div>
 
