@@ -12,11 +12,11 @@
     },
     {
       "title": "Learn more",
-      "completed": true,
+      "completed": false,
       "id": 3
     },
     {
-      "title": "Hello",
+      "title": "Use react",
       "completed": true,
       "id": 4
     }

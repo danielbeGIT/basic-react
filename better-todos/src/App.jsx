@@ -7,6 +7,8 @@ import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import TodoPage from './pages/TodoPage';
 import CreateTodoPage from './pages/CreateTodoPage'
+import EditTodoPage from './pages/EditTodoPage'
+import NotFound from './pages/NotFound'
 
 
 const App = () => {
@@ -22,7 +24,9 @@ const App = () => {
 					<Route path="/" element={<HomePage />} />
 					<Route path="/todos" element={<TodosPage />} />
 					<Route path="/todos/:id" element={<TodoPage />} />
+					<Route path="/todos/:id/edit" element={<EditTodoPage />} />
 					<Route path="/todos/create" element={<CreateTodoPage />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Container>
 		</div>

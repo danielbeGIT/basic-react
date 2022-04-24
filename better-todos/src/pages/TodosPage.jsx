@@ -5,34 +5,23 @@ import { Link } from 'react-router-dom'
 
 const TodosPage = () => {
 	const [todos, setTodos] = useState([])
-	const [unfinishedTodos, setUnfinishedTodos] = useState([])
-	const [finishedTodos, setFinishedTodos] = useState([])
+	// const [unfinishedTodos, setUnfinishedTodos] = useState([])
+	// const [finishedTodos, setFinishedTodos] = useState([])
 
 	// get todos from api
 	const getTodos = async () => {
+		// Get todos from api
 		const data = await TodosAPI.getTodos()
+
+		// sort alphabetically by title
+		data.sort((a,b) => a.title.localeCompare(b.title))
+
+		// sort by completed status
+		data.sort((a,b) => a.completed - b.completed)
+
+		// update todos state
 		setTodos(data)
 	}
-
-	// Create a new todo in API
-	const createTodo = async (newTodo) => {
-		// newTodo = { title: "", completed: false }
-
-		await TodosAPI.createTodo(newTodo)
-		getTodos()
-
-		// setTodos([...todos, newTodo])
-	}
-
-	/*
-	// Delete a todo in the API
-	const deleteTodo = async (todo) => {
-		await TodosAPI.deleteTodo(todo.id)
-		getTodos()
-
-		// setTodos(todos.filter(todo => todo !== clickedTodo))
-	}
-	*/
 
 	// get todos from api when component is first mounted
 	useEffect(() => {
