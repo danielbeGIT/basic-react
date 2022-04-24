@@ -13,7 +13,8 @@ const Navigation = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
-						<Nav.Link as={NavLink} to="/todos">Todos</Nav.Link>
+						{/* add end after or before the to="" to move all links being active */}
+						<Nav.Link as={NavLink} to="/todos" end>Todos</Nav.Link>
 						<Nav.Link as={NavLink} to="/todos/create">Create Todos</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
