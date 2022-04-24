@@ -6,6 +6,7 @@ import TodosPage from './pages/TodosPage'
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import TodoPage from './pages/TodoPage';
+import CreateTodoPage from './pages/CreateTodoPage'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
 					<Route path="/" element={<HomePage />} />
 					<Route path="/todos" element={<TodosPage />} />
 					<Route path="/todos/:id" element={<TodoPage />} />
+					<Route path="/todos/create" element={<CreateTodoPage />} />
 				</Routes>
 			</Container>
 		</div>
