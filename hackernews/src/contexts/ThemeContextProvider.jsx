@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import classNames from 'classnames'
 
 export const ThemeContext = createContext()
 
@@ -9,6 +10,14 @@ export const useThemeContext = () => {
 const ThemeContextProvider = ({ children }) => {
     const [theme, setTheme] = useState('light')
 
+    const getStyle = () => {
+        return classNames({
+            'app': true,
+            'bg-dark': isDarkTheme(),
+            'text-light': isDarkTheme(),
+        })
+    }
+
     const isDarkTheme = () => theme === 'dark'
 
     const toggleTheme = () => {
@@ -17,6 +26,7 @@ const ThemeContextProvider = ({ children }) => {
 
     const values = {
         theme,
+        getStyle,
         isDarkTheme,
         toggleTheme,
     }
