@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './assets/scss/App.scss'
 import Forecast from './components/Forecast'
 import SearchCity from './components/SearchCity'
 import { getCurrentWeather } from './services/owmapi'
