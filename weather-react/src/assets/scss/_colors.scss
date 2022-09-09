@@ -1,0 +1,46 @@
+$lightGrey:				#ddd;
+$lightishGrey:			#bbb;
+$grey:					#888;
+
+$hk-blue:               #69b3e7;
+
+.hk-btn-blue {
+	background-color: $hk-blue;
+	color: scale-color($hk-blue, $lightness: -67%);
+
+	&:hover {
+		background-color: scale-color($hk-blue, $lightness: 25%);
+	}
+}
+
+.article {
+	background-color: blanchedalmond;
+	padding: 1rem;
+}
+
+.article > h2 {
+	color: red;
+}
+
+ul {
+	> li {
+		color: red;
+	}
+}
+
+// ul > li {
+// 	color: red;
+// }
+
+// p + p {
+// 	margin-bottom: 0.5rem;
+// 	margin-top: 0.5rem;
+// }
+
+p {
+	margin-bottom: 1rem;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}

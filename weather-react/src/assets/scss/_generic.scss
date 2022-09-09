@@ -1,0 +1,51 @@
+@import 'typography';
+
+
+/**
+ * Generic styles
+ */
+
+html,
+body,
+#root {
+    min-height: 100vh;
+}
+
+body {
+    background-color: $bgColor;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%),
+        url('../images/bg-image.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    line-height: 1.5;
+}
+
+
+#app {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.hk-btn {
+    border-radius: 3px;
+    padding: 0.5em 0.75rem;
+    font-size: 0.8rem;
+}
+
+.hk-btn-pink {
+    @extend .hk-btn;
+    
+    color: pink;
+    background-color: lightpink;
+    border-color: pink;
+}
+
