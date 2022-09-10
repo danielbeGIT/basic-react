@@ -55,7 +55,7 @@ module.exports = function(socket, _io) {
     io = _io;
 
     debug(`Client ${socket.id} connected`)
-
+    
     // handle user disconnect
     socket.on('disconnect', handleDisconnect);
 
